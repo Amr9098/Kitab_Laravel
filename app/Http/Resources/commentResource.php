@@ -20,8 +20,9 @@ class commentResource extends JsonResource
              'created_at'=>$this->created_at,
             'name' => $this->name,
             'comment_text' => $this->comment_text,
-          
-           
+            'email' => $this->email
+
+
         ];
     }
 }

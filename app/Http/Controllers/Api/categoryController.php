@@ -36,7 +36,7 @@ class categoryController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:3|max:50|unique:categorys',
+            'name' => 'required|min:2|max:50|unique:categorys',
 
         ]);
         if ($validator->fails()) {
@@ -80,7 +80,7 @@ class categoryController extends Controller
         $category= category::find($id);
         if(!$category){
             return response( "category not found")->setStatusCode(400);
-        }else{  
+        }else{
             $category->delete($id);
             return response( "category deleted successfully")->setStatusCode(200);
 
