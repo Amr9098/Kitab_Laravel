@@ -32,7 +32,7 @@ class CommentController extends Controller
     {
 
        $validator = Validator::make($request->all(),[
-             'comment_text' => ['required','min:5'
+             'comment_text' => ['required','min:11'
     //
              ]
         ]);
@@ -61,7 +61,7 @@ class CommentController extends Controller
     {
 
         $comment =Comment::join('users', 'users.id', '=', 'comments.user_id')
-        ->select('users.name', 'comments.comment_text','comments.id','comments.created_at','users.email')->where('comments.book_id',$id)
+        ->select('users.name', 'comments.comment_text','comments.id','comments.created_at','comments.user_id')->where('comments.book_id',$id)
         ->get();
 
 
@@ -72,7 +72,7 @@ class CommentController extends Controller
 
 
 
-      return response()->json(commentResource::collection($comment));
+       return response()->json(commentResource::collection($comment));
 
     }
 
